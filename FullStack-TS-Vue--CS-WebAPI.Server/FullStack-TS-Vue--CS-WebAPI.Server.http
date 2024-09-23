@@ -1,0 +1,6 @@
+@FullStack_TS_Vue__CS_WebAPI.Server_HostAddress = http://localhost:5041
+
+GET {{FullStack_TS_Vue__CS_WebAPI.Server_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

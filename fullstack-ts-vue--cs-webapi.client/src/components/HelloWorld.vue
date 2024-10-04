@@ -64,7 +64,7 @@
                 this.post = null;
                 this.loading = true;
 
-                fetch('http://localhost:5041'+'/api/Book/')
+                fetch('/api/Book/')
                     .then(r => r.json())
                     .then(json => {
                         this.post = json as books;

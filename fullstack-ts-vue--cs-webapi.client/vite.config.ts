@@ -12,10 +12,10 @@ const baseFolder =
         ? `${env.APPDATA}/ASP.NET/https`
         : `${env.HOME}/.aspnet/https`;
 
-const certificateName = "fullstack-ts-vue--cs-webapi.client";
-const certFilePath = path.join(baseFolder, `${certificateName}.pem`);
-const keyFilePath = path.join(baseFolder, `${certificateName}.key`);
-
+//const certificateName = "fullstack-ts-vue--cs-webapi.client";
+//const certFilePath = path.join(baseFolder, `${certificateName}.pem`);
+//const keyFilePath = path.join(baseFolder, `${certificateName}.key`);
+/*
 if (!fs.existsSync(certFilePath) || !fs.existsSync(keyFilePath)) {
     if (0 !== child_process.spawnSync('dotnet', [
         'dev-certs',
@@ -29,7 +29,7 @@ if (!fs.existsSync(certFilePath) || !fs.existsSync(keyFilePath)) {
         throw new Error("Could not create certificate.");
     }
 }
-
+*/
 const target = env.ASPNETCORE_HTTPS_PORT ? `https://localhost:${env.ASPNETCORE_HTTPS_PORT}` :
     env.ASPNETCORE_URLS ? env.ASPNETCORE_URLS.split(';')[0] : 'https://localhost:7085';
 
@@ -42,16 +42,20 @@ export default defineConfig({
         }
     },
     server: {
+/*
         proxy: {
             '^/weatherforecast': {
                 target,
                 secure: false
             }
         },
+*/
         port: 5173,
+/*
         https: {
             key: fs.readFileSync(keyFilePath),
             cert: fs.readFileSync(certFilePath),
         }
+*/
     }
 })

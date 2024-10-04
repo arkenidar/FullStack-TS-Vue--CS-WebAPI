@@ -12,10 +12,26 @@ public static class BookEndpoints
 
         group.MapGet("/", async (AppDbContext db) =>
         {
+
             //return await db.Books.Include(b => b.Author.Name).ToListAsync();
+
+/*
 			var booksWithAuthors = await db.Books
 			.Select(b => new { b.Id, b.Title, AuthorName = b.Author.Name, b.PublicationYear })
 			.ToListAsync();
+
+*/
+  
+    var booksWithAuthors = await db.Books
+    .Select(b => new 
+    { 
+        b.Id, 
+        b.Title, 
+        AuthorName = b.Author != null ? b.Author.Name : "Unknown", 
+        b.PublicationYear 
+    })
+    .ToListAsync();
+
 			return booksWithAuthors;
         })
         .WithName("GetAllBooks")
